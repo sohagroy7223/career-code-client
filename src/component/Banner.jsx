@@ -1,0 +1,33 @@
+import React from "react";
+import banner from "../assets/banner.png";
+
+const Banner = () => {
+  return (
+    <div className="md:flex justify-center items-center p-8 ">
+      <div className="space-y-5 md:w-170">
+        <p className="text-primary p-2 bg-white w-40 rounded-2xl">
+          find your Dream job
+        </p>
+        <h3 className="text-5xl font-bold">
+          Discover Endless Career{" "}
+          <span className="text-primary">Opportunities</span>{" "}
+        </h3>
+        <p className="">
+          Explore thousands of job listings find the right <br /> fit apply with
+          easy and take the next step in your career{" "}
+        </p>
+        <div className="flex gap-6">
+          <button className="btn bg-primary text-white">
+            Browser All jobs
+          </button>
+          <button className="btn btn-neutral btn-outline">Post a Job</button>
+        </div>
+      </div>
+      <div>
+        <img className="w-full" src={banner} alt="" />
+      </div>
+    </div>
+  );
+};
+
+export default Banner;

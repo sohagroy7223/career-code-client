@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router";
+import logo from "../assets/careerCode.png";
 
 const Navbar = () => {
   const userInfo = use(AuthContext);
@@ -8,19 +9,54 @@ const Navbar = () => {
   const link = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="allJobs">All Jobs</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+          }
+          to="allJobs"
+        >
+          All Jobs
+        </NavLink>
       </li>
       <li>
-        <NavLink to="myApplication">My Application</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+          }
+          to="myApplication"
+        >
+          My Application
+        </NavLink>
       </li>
       <li>
-        <NavLink to="addJob">Add Job</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+          }
+          to="addJob"
+        >
+          Add Job
+        </NavLink>
       </li>
       <li>
-        <NavLink to="postJob">My Posted Jobs</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+          }
+          to="postJob"
+        >
+          My Posted Jobs
+        </NavLink>
       </li>
     </>
   );
@@ -52,7 +88,7 @@ const Navbar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <img className="w-26" src={logo} alt="logo" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>

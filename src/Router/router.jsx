@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/allJobs",
         element: <AllJobs></AllJobs>,
+        loader: () => fetch("http://localhost:3000/jobs"),
       },
       {
         path: "/myApplication",

@@ -30,32 +30,48 @@ const Home = () => {
   return (
     <div className="space-y-20 p-4">
       <Banner></Banner>
-      <h3 className="text-3xl font-bold mb-5 text-center mt-3">
-        Popular <span className="text-primary">job</span>
-      </h3>
-      {/* popular job */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
-        {popularJob.map((popular) => (
-          <Popular key={popular._id} popular={popular}></Popular>
-        ))}
+      <div>
+        <div className="flex justify-between items-center p-3">
+          <h3 className="text-3xl font-bold mb-5 text-center ">
+            Popular <span className="text-primary">job</span>
+          </h3>
+          <button className="font-semibold text-primary mb-4 border p-1 rounded-lg cursor-pointer">
+            view all
+          </button>
+        </div>
+        {/* popular job */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
+          {popularJob.map((popular) => (
+            <Popular key={popular._id} popular={popular}></Popular>
+          ))}
+        </div>
       </div>
-      <h3 className="text-3xl font-bold mb-5 text-center mt-3">
-        All <span className="text-primary">Company</span>
-      </h3>
-      <div className="flex gap-3 items-center">
-        {/* {allCompany.map((company) => (
+      <div>
+        <h3 className="text-3xl font-bold mb-5 text-center ">
+          All <span className="text-primary">Company</span>
+        </h3>
+        <div className="flex gap-3 items-center">
+          {/* {allCompany.map((company) => (
           <Company key={company._id} company={company}></Company>
         ))} */}
-        <Company companies={allCompany} />
+          <Company companies={allCompany} />
+        </div>
       </div>
       {/* featured job */}
-      <h3 className="text-3xl font-bold mb-5 text-center mt-3">
-        Featured <span className="text-primary">job</span>
-      </h3>
-      <div className="grid  md:grid-cols-3 lg:grid-cols-4 gap-3 ">
-        {featureJob.map((feature) => (
-          <Feature key={feature._id} feature={feature}></Feature>
-        ))}
+      <div>
+        <div className="flex justify-between items-center p-3">
+          <h3 className="text-3xl font-bold mb-5 text-center ">
+            Featured <span className="text-primary">job</span>
+          </h3>
+          <button className=" font-semibold text-primary mb-4 border p-1 rounded-lg cursor-pointer">
+            view all
+          </button>
+        </div>
+        <div className="grid  md:grid-cols-3 lg:grid-cols-4 gap-3 ">
+          {featureJob.map((feature) => (
+            <Feature key={feature._id} feature={feature}></Feature>
+          ))}
+        </div>
       </div>
     </div>
   );

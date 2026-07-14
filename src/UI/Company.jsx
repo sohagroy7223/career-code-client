@@ -20,7 +20,7 @@ const Company = ({ companies }) => {
             key={index}
             src={company.company_log}
             alt="company logo"
-            className="w-20  h-18 rounded-md object-contain"
+            className="w-20  h-17 rounded-md object-contain"
           />
         ))}
       </motion.div>

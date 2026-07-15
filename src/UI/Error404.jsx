@@ -18,7 +18,10 @@ const Error404 = () => {
           Back to Home page
         </button>
         <img className="w-md" src="Error page.png" alt="" />
-        <h3 className="text-3xl font-bold "> Can't found this Page </h3>
+        <h3 className="text-3xl font-bold italic">
+          {" "}
+          Can't found this <span className="text-primary">Page</span>{" "}
+        </h3>
       </div>
     </div>
   );

@@ -1,7 +1,15 @@
 import React from "react";
 import banner from "../assets/banner.png";
+import { useNavigate } from "react-router";
 
 const Banner = () => {
+  const navigate = useNavigate();
+  const AllPage = () => {
+    navigate("allJobs");
+  };
+  const PostJob = () => {
+    navigate("addJob");
+  };
   return (
     <div className="md:flex justify-center items-center p-8 ">
       <div className="space-y-5 md:w-170">
@@ -17,10 +25,12 @@ const Banner = () => {
           easy and take the next step in your career{" "}
         </p>
         <div className="flex gap-6">
-          <button className="btn bg-primary text-white">
+          <button onClick={AllPage} className="btn bg-primary text-white">
             Browser All jobs
           </button>
-          <button className="btn btn-neutral btn-outline">Post a Job</button>
+          <button onClick={PostJob} className="btn btn-neutral btn-outline">
+            Post a Job
+          </button>
         </div>
       </div>
       <div>

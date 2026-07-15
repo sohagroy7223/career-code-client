@@ -9,6 +9,7 @@ import AddJob from "../pages/AddJob";
 import PostJob from "../pages/PostJob";
 import Error404 from "../UI/Error404";
 import Login from "../component/Login";
+import Register from "../component/Register";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

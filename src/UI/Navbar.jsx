@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../assets/careerCode.png";
 
 const Navbar = () => {
@@ -61,7 +61,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar backdrop-blur-sm shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -94,7 +94,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link to="login">Login</Link>
       </div>
     </div>
   );

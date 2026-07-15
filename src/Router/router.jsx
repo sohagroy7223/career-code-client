@@ -8,6 +8,7 @@ import MyApplication from "../pages/MyApplication";
 import AddJob from "../pages/AddJob";
 import PostJob from "../pages/PostJob";
 import Error404 from "../UI/Error404";
+import Login from "../component/Login";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +34,12 @@ const router = createBrowserRouter([
         element: <AddJob></AddJob>,
       },
       {
-        path: "postJob",
+        path: "/postJob",
         element: <PostJob></PostJob>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
     ],
   },

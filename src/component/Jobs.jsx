@@ -1,6 +1,9 @@
 import React from "react";
+import { CiBookmark } from "react-icons/ci";
 import { FaSearch } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
+import { MdHourglassFull } from "react-icons/md";
+import { VscRemoteExplorer } from "react-icons/vsc";
 
 const Jobs = ({ jobs }) => {
   const { company_log, title, company, jobType, workplace, location } = jobs;
@@ -16,33 +19,23 @@ const Jobs = ({ jobs }) => {
           <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
             {company}
             <div className="md:flex gap-14">
-              <p>{jobType}</p>
-              <p>{workplace}</p>
               <p className="flex gap-2 items-center">
-                <IoLocation />
+                <MdHourglassFull size={15} />
+                {jobType}
+              </p>
+              <p className="flex gap-2 items-center">
+                {" "}
+                <VscRemoteExplorer size={15} />
+                {workplace}
+              </p>
+              <p className="flex gap-2 items-center">
+                <IoLocation size={15} />
                 {location}
               </p>
             </div>
           </div>
         </div>
-
-        <button className="btn btn-square btn-ghost">
-          <svg
-            className="size-[1.2em]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-            </g>
-          </svg>
-        </button>
+        <CiBookmark size={20} />
       </li>
     </ul>
   );

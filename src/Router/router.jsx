@@ -7,11 +7,13 @@ import AllJobs from "../pages/AllJobs";
 import MyApplication from "../pages/MyApplication";
 import AddJob from "../pages/AddJob";
 import PostJob from "../pages/PostJob";
+import Error404 from "../UI/Error404";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error404></Error404>,
     children: [
       {
         index: true,

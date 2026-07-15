@@ -45,7 +45,7 @@ const Navbar = () => {
           }
           to="addJob"
         >
-          Add Job
+          Post Job
         </NavLink>
       </li>
       <li>

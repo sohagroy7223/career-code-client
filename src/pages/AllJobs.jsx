@@ -8,20 +8,26 @@ const AllJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const [search, setSearch] = useState("");
   const limit = 6;
 
   const instance = useAxios();
 
   useEffect(() => {
     instance
-      .get(`/jobs?limit=${limit}&skip=${currentPage * limit}`)
+      .get(`/jobs?limit=${limit}&skip=${currentPage * limit}&search=${search}`)
       .then((res) => {
         setJobs(res.data.Jobs);
         setAllJobs(res.data.total);
         const page = Math.ceil(res.data.total / limit);
         setTotalPage(page);
       });
-  }, [currentPage]);
+  }, [currentPage, search]);
+
+  const handelSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   // console.log(totalPage);
   return (
     <div className="px-3 space-y-5">
@@ -40,6 +46,7 @@ const AllJobs = () => {
               <input
                 className="p-1.5  border-primary rounded-sm"
                 type="text"
+                onChange={handelSearch}
                 placeholder="search your job by title"
               />
 
@@ -66,7 +73,11 @@ const AllJobs = () => {
       </>
       <div className=" flex flex-row gap-3 justify-center flex-wrap">
         {[...Array(totalPage).keys()].map((i) => (
-          <button onClick={() => setCurrentPage(i)} className="btn">
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i)}
+            className={`btn ${i === currentPage && "btn-primary"}`}
+          >
             {i}
           </button>
         ))}

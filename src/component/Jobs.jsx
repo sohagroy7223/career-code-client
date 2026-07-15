@@ -18,7 +18,7 @@ const Jobs = ({ jobs }) => {
           <h3 className="text-2xl font-bold">{title}</h3>
           <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
             {company}
-            <div className="md:flex gap-14 space-y-5 md:space-">
+            <div className="md:flex gap-14 space-y-3 md:space-y-0">
               <p className="flex gap-2 items-center">
                 <MdHourglassFull size={15} />
                 {jobType}

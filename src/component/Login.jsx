@@ -4,8 +4,18 @@ import { AuthContext } from "../context/AuthContext";
 import useAxios from "../Hook/useAxios";
 
 const Login = () => {
-  const { signInWithGoogle } = use(AuthContext);
+  const { signInWithGoogle, loginUser } = use(AuthContext);
   const instance = useAxios();
+
+  const handelLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    // console.log(email, password);
+    loginUser(email, password).then((result) => {
+      console.log(result);
+    });
+  };
 
   const handelGoogleLogin = () => {
     signInWithGoogle().then((result) => {
@@ -28,12 +38,16 @@ const Login = () => {
       style={{ backgroundImage: "url('login.jpg')" }}
     >
       <h1 className="text-3xl font-bold text-center mb-6">Login now!</h1>
-      <form className="fieldset max-w-md mx-auto border backdrop-blur-sm rounded-2xl p-10">
+      <form
+        onSubmit={handelLogin}
+        className="fieldset max-w-md mx-auto border backdrop-blur-sm rounded-2xl p-10"
+      >
         <label className="">Email</label>
         <input
           type="email"
           className="input text-black"
           placeholder="Email"
+          name="email"
           autoComplete="username"
         />
         <label className="">Password</label>
@@ -41,6 +55,7 @@ const Login = () => {
           type="password"
           className="input text-black"
           placeholder="Password"
+          name="password"
           autoComplete="current-password"
         />
         <div>

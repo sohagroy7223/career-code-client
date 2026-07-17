@@ -5,8 +5,10 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
@@ -17,6 +19,10 @@ const AuthProvider = ({ children }) => {
   };
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const sentEmailVerification = () => {
+    return sendEmailVerification(auth.currentUser);
   };
 
   const loginUser = (email, password) => {
@@ -34,11 +40,18 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const updateUser = (updateData) => {
+    return updateProfile(auth.currentUser, updateData);
+  };
+
   const userInfo = {
     signInWithGoogle,
     createUser,
+    sentEmailVerification,
     loginUser,
     user,
+    updateUser,
+    setUser,
   };
 
   return <AuthContext value={userInfo}>{children}</AuthContext>;

@@ -4,7 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 import useAxios from "../Hook/useAxios";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, sentEmailVerification, updateUser, setUser } =
+    use(AuthContext);
   const instance = useAxios();
 
   const handelRegister = (e) => {
@@ -17,12 +18,22 @@ const Register = () => {
 
     createUser(email, password).then((result) => {
       // console.log(result);
-
+      sentEmailVerification().then(() => {
+        alert("please verify your email");
+      });
+      updateUser({ displayName: name, photoURL: image })
+        .then(() => {
+          setUser({ ...user, displayName: name, photoURL: image });
+        })
+        .catch((error) => {
+          console.log(error.message);
+          // setUser(user);
+        });
       instance
         .post("/users", {
-          displayName: `${result.user.displayName}`,
-          email: `${result.user.email}`,
-          image: `${result.user.photoURL}`,
+          displayName: name,
+          email: email,
+          image: image,
         })
         .then((data) => {
           console.log(data);

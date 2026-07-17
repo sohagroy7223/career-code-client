@@ -1,10 +1,11 @@
 import React, { use, useRef } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import useAxios from "../Hook/useAxios";
 
 const Login = () => {
   const { signInWithGoogle, loginUser, resetPasswordMail } = use(AuthContext);
+  const navigate = useNavigate();
   const instance = useAxios();
   const emailRef = useRef();
 
@@ -15,13 +16,14 @@ const Login = () => {
     // console.log(email, password);
     loginUser(email, password).then((result) => {
       console.log(result);
+      navigate("/");
     });
   };
 
   const handelGoogleLogin = () => {
     signInWithGoogle().then((result) => {
       // console.log(result.user);
-
+      navigate("/");
       instance
         .post("/users", {
           displayName: `${result.user.displayName}`,

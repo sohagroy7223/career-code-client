@@ -10,6 +10,7 @@ import PostJob from "../pages/PostJob";
 import Error404 from "../UI/Error404";
 import Login from "../component/Login";
 import Register from "../component/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,15 +29,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/myApplication",
-        element: <MyApplication></MyApplication>,
+        element: (
+          <PrivateRoute>
+            <MyApplication></MyApplication>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addJob",
-        element: <AddJob></AddJob>,
+        element: (
+          <PrivateRoute>
+            <AddJob></AddJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/postJob",
-        element: <PostJob></PostJob>,
+        element: (
+          <PrivateRoute>
+            <PostJob></PostJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

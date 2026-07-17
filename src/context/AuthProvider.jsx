@@ -9,16 +9,22 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
+import Loading from "../component/Loading";
+import { useNavigate } from "react-router";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -27,6 +33,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -34,6 +41,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
       if (currenUser) {
         setUser(currenUser);
+        setLoading(false);
       }
     });
     return () => {
@@ -49,6 +57,11 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
+  const signOutUser = () => {
+    setLoading(false);
+    return signOut(auth);
+  };
+
   const userInfo = {
     signInWithGoogle,
     createUser,
@@ -58,7 +71,12 @@ const AuthProvider = ({ children }) => {
     updateUser,
     setUser,
     resetPasswordMail,
+    signOutUser,
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };

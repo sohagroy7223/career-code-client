@@ -1,10 +1,19 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../assets/careerCode.png";
 
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, signOutUser } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handelSignOut = () => {
+    signOutUser().then(() => {
+      navigate("/login");
+      alert("sign out user successfully");
+    });
+  };
+
   // console.log(user);
   const link = (
     <>
@@ -28,36 +37,40 @@ const Navbar = () => {
           All Jobs
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
-          }
-          to="myApplication"
-        >
-          My Application
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
-          }
-          to="addJob"
-        >
-          Post Job
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
-          }
-          to="postJob"
-        >
-          My Posted Jobs
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+              }
+              to="myApplication"
+            >
+              My Application
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+              }
+              to="addJob"
+            >
+              Post Job
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+              }
+              to="postJob"
+            >
+              My Posted Jobs
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -94,9 +107,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn  bg-gray-100">
-          <Link to="/login">{user ? "LogOut" : "Login"}</Link>
-        </button>
+        {user ? (
+          <button onClick={handelSignOut} className="btn  bg-gray-100">
+            <Link to="/">LogOut</Link>
+          </button>
+        ) : (
+          <button className="btn  bg-gray-100">
+            <Link to="/login">Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );

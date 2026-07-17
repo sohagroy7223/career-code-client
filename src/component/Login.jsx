@@ -1,11 +1,12 @@
-import React, { use } from "react";
+import React, { use, useRef } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import useAxios from "../Hook/useAxios";
 
 const Login = () => {
-  const { signInWithGoogle, loginUser } = use(AuthContext);
+  const { signInWithGoogle, loginUser, resetPasswordMail } = use(AuthContext);
   const instance = useAxios();
+  const emailRef = useRef();
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -32,6 +33,14 @@ const Login = () => {
         });
     });
   };
+
+  const handelResetPassword = () => {
+    const email = emailRef.current.value;
+    resetPasswordMail(email).then((result) => {
+      alert("please check your email");
+    });
+  };
+
   return (
     <div
       className="h-screen bg-cover mx-auto items-center flex flex-col justify-center bg-center  text-gray-200 rounded-md"
@@ -48,6 +57,7 @@ const Login = () => {
           className="input text-black"
           placeholder="Email"
           name="email"
+          ref={emailRef}
           autoComplete="username"
         />
         <label className="">Password</label>
@@ -59,7 +69,9 @@ const Login = () => {
           autoComplete="current-password"
         />
         <div>
-          <a className="link link-hover">Forgot password?</a>
+          <button onClick={handelResetPassword} className="link link-hover">
+            Forgot password?
+          </button>
         </div>
         <button className="btn  mt-4">Login</button>
       </form>

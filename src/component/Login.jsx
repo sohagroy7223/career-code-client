@@ -1,14 +1,26 @@
 import React, { use } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import useAxios from "../Hook/useAxios";
 
 const Login = () => {
   const { signInWithGoogle } = use(AuthContext);
+  const instance = useAxios();
 
   const handelGoogleLogin = () => {
-    signInWithGoogle()
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    signInWithGoogle().then((result) => {
+      // console.log(result.user);
+
+      instance
+        .post("/users", {
+          displayName: `${result.user.displayName}`,
+          email: `${result.user.email}`,
+          image: `${result.user.photoURL}`,
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    });
   };
   return (
     <div
@@ -18,12 +30,18 @@ const Login = () => {
       <h1 className="text-3xl font-bold text-center mb-6">Login now!</h1>
       <form className="fieldset max-w-md mx-auto border backdrop-blur-sm rounded-2xl p-10">
         <label className="">Email</label>
-        <input type="email" className="input text-black" placeholder="Email" />
+        <input
+          type="email"
+          className="input text-black"
+          placeholder="Email"
+          autoComplete="username"
+        />
         <label className="">Password</label>
         <input
           type="password"
           className="input text-black"
           placeholder="Password"
+          autoComplete="current-password"
         />
         <div>
           <a className="link link-hover">Forgot password?</a>

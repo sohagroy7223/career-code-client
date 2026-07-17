@@ -72,6 +72,14 @@ const AllJobs = () => {
         ))}
       </>
       <div className=" flex flex-row gap-3 justify-center flex-wrap">
+        {currentPage > 0 && (
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            className="btn"
+          >
+            Prev
+          </button>
+        )}
         {[...Array(totalPage).keys()].map((i) => (
           <button
             key={i}
@@ -80,7 +88,15 @@ const AllJobs = () => {
           >
             {i}
           </button>
-        ))}
+        ))}{" "}
+        {currentPage < totalPage - 1 && (
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="btn"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

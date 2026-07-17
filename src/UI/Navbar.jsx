@@ -54,7 +54,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
               }
-              to="addJob"
+              to="postJob"
             >
               Post Job
             </NavLink>
@@ -64,7 +64,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
               }
-              to="postJob"
+              to="postedJob"
             >
               My Posted Jobs
             </NavLink>

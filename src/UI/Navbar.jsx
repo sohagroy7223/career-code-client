@@ -4,8 +4,8 @@ import { Link, NavLink } from "react-router";
 import logo from "../assets/careerCode.png";
 
 const Navbar = () => {
-  const userInfo = use(AuthContext);
-  //   console.log(userInfo);
+  const { user } = use(AuthContext);
+  // console.log(user);
   const link = (
     <>
       <li>
@@ -95,7 +95,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <button className="btn  bg-gray-100">
-          <Link to="/login">Login</Link>
+          <Link to="/login">{user ? "LogOut" : "Login"}</Link>
         </button>
       </div>
     </div>

@@ -44,9 +44,9 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
               }
-              to="myApplication"
+              to="favoriteJob"
             >
-              My Application
+              Favorite Job
             </NavLink>
           </li>
           <li>

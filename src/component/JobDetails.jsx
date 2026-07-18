@@ -72,8 +72,8 @@ const JobDetails = () => {
           </div>
         </li>
       </div>
-      <div className="bg-base-100 mt-10 p-3 flex w-full gap-5 ">
-        <div className="space-y-6 p-5 bg-gray-100 w-[70%] rounded-lg">
+      <div className="bg-base-100 mt-10 p-3 md:flex w-full gap-5 space-y-5 md:space-y-0">
+        <div className="space-y-6 p-5 bg-gray-100 md:w-[70%] rounded-lg">
           <div>
             <h3 className="font-bold text-lg">Job Description</h3>
             <p>{description}</p>
@@ -112,7 +112,7 @@ const JobDetails = () => {
             </h3>
           </div>
         </div>
-        <div className=" p-5 w-[30%] bg-gray-100 rounded-lg space-y-5">
+        <div className=" p-5 md:w-[30%] bg-gray-100 rounded-lg space-y-5">
           <h3 className="font-bold text-center text-lg">Job Details</h3>
           <div>
             <p className="text-lg">Job Title : </p>

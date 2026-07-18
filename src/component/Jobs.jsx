@@ -12,15 +12,12 @@ const Jobs = ({ jobs }) => {
   //   console.log(jobs);
 
   return (
-    <Link
-      className="list bg-base-100 rounded-box shadow-md cursor-pointer"
-      to={`/jobsDetails/${_id}`}
-    >
+    <div className="list rounded-box shadow-md ">
       <li className="list-row">
         <div>
           <img className="size-15 rounded-box" src={company_log} />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-5">
           <h3 className="text-2xl font-bold">{title}</h3>
           <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
             {company}
@@ -41,9 +38,14 @@ const Jobs = ({ jobs }) => {
             </div>
           </div>
         </div>
-        <CiBookmark size={20} />
+        <button className="cursor-pointer">
+          <CiBookmark size={25} />
+        </button>
       </li>
-    </Link>
+      <Link className="btn cursor-pointer" to={`/jobsDetails/${_id}`}>
+        view details
+      </Link>
+    </div>
   );
 };
 

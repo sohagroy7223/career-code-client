@@ -11,6 +11,7 @@ import Error404 from "../UI/Error404";
 import Login from "../component/Login";
 import Register from "../component/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import JobDetails from "../component/JobDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,16 @@ const router = createBrowserRouter([
         path: "/allJobs",
         element: <AllJobs></AllJobs>,
         loader: () => fetch("http://localhost:3000/jobs"),
+      },
+      {
+        path: "/jobsDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/jobs/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <JobDetails></JobDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myApplication",

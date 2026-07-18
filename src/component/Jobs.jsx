@@ -4,12 +4,18 @@ import { FaSearch } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
+import { Link } from "react-router";
 
 const Jobs = ({ jobs }) => {
-  const { company_log, title, company, jobType, workplace, location } = jobs;
+  const { _id, company_log, title, company, jobType, workplace, location } =
+    jobs;
   //   console.log(jobs);
+
   return (
-    <ul className="list bg-base-100 rounded-box shadow-md ">
+    <Link
+      className="list bg-base-100 rounded-box shadow-md cursor-pointer"
+      to={`/jobsDetails/${_id}`}
+    >
       <li className="list-row">
         <div>
           <img className="size-15 rounded-box" src={company_log} />
@@ -37,7 +43,7 @@ const Jobs = ({ jobs }) => {
         </div>
         <CiBookmark size={20} />
       </li>
-    </ul>
+    </Link>
   );
 };
 

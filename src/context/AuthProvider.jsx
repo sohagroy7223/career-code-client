@@ -13,7 +13,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import Loading from "../component/Loading";
-import { useNavigate } from "react-router";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -41,8 +40,8 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
       if (currenUser) {
         setUser(currenUser);
-        setLoading(false);
       }
+      setLoading(false);
     });
     return () => {
       unSubscribe();
@@ -58,7 +57,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOutUser = () => {
-    setLoading(false);
+    setLoading(true);
     return signOut(auth);
   };
 

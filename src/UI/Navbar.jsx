@@ -108,11 +108,14 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button onClick={handelSignOut} className="btn  bg-gray-100">
+          <button
+            onClick={handelSignOut}
+            className="btn text-gray-100 bg-primary"
+          >
             <Link to="/">LogOut</Link>
           </button>
         ) : (
-          <button className="btn  bg-gray-100">
+          <button className="btn text-gray-100 bg-primary">
             <Link to="/login">Login</Link>
           </button>
         )}

@@ -1,12 +1,17 @@
 import React, { use } from "react";
 import { CiBookmark } from "react-icons/ci";
+import { IoMdArrowBack } from "react-icons/io";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 
 const JobDetails = () => {
   const data = useLoaderData();
+  const navigate = useNavigate();
+  const back = () => {
+    navigate(-1);
+  };
   console.log(data);
   const {
     applicationDeadline,
@@ -28,6 +33,14 @@ const JobDetails = () => {
   } = data;
   return (
     <div>
+      <button
+        onClick={back}
+        className="flex font-medium items-center gap-2 cursor-pointer mb-3"
+      >
+        {" "}
+        <IoMdArrowBack />
+        back prev page
+      </button>
       <div className="list bg-base-100 rounded-box shadow-md ">
         <li className="list-row">
           <div>

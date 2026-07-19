@@ -9,14 +9,14 @@ import useAxios from "../Hook/useAxios";
 import { IoMdBookmark } from "react-icons/io";
 import { AuthContext } from "../context/AuthContext";
 
-const Jobs = ({ jobs }) => {
+const Jobs = ({ jobs, setFavorite, favorite }) => {
   const { user } = use(AuthContext);
   const email = user.email;
 
   const { _id, company_log, title, company, jobType, workplace, location } =
     jobs;
-  const [favorite, setFavorite] = useState([]);
-  //   console.log(jobs);
+
+  // console.log(favorite);
   const instance = useAxios();
 
   const handelBookMark = (_id) => {
@@ -35,7 +35,7 @@ const Jobs = ({ jobs }) => {
       })
       .then((res) => {
         console.log(res.data);
-        if (res.data.acknowledged) {
+        if (res.data.insertedId) {
           setFavorite((prev) => [...prev, _id]);
         }
       });

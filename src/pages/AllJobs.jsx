@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import useAxios from "../Hook/useAxios";
 import Jobs from "../component/Jobs";
 import { button } from "framer-motion/client";
+import { AuthContext } from "../context/AuthContext";
 
 const AllJobs = () => {
+  const [favorite, setFavorite] = useState([]);
+  const { user } = use(AuthContext);
+  // console.log(user.email);
   const [allJobs, setAllJobs] = useState(0);
   const [jobs, setJobs] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
@@ -24,11 +28,21 @@ const AllJobs = () => {
       });
   }, [currentPage, search]);
 
+  useEffect(() => {
+    if (user?.email) {
+      instance.get(`/favoriteJob?email=${user.email}`).then((res) => {
+        // console.log(res.data);
+        const favoriteId = res.data.map((item) => item.jobId);
+        setFavorite(favoriteId);
+      });
+    }
+  }, [user]);
+
   const handelSearch = (e) => {
     setSearch(e.target.value);
   };
 
-  // console.log(totalPage);
+  // console.log(favorite);
   return (
     <div className="px-3 space-y-5">
       <>
@@ -68,7 +82,12 @@ const AllJobs = () => {
           </div>
         </div>
         {jobs.map((jobs) => (
-          <Jobs key={jobs._id} jobs={jobs}></Jobs>
+          <Jobs
+            key={jobs._id}
+            setFavorite={setFavorite}
+            favorite={favorite}
+            jobs={jobs}
+          ></Jobs>
         ))}
       </>
       <div className=" flex flex-row gap-3 justify-center flex-wrap">

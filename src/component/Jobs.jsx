@@ -1,16 +1,46 @@
-import React from "react";
-import { CiBookmark } from "react-icons/ci";
+import React, { use, useState } from "react";
+
 import { FaSearch } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
 import { Link } from "react-router";
+import useAxios from "../Hook/useAxios";
+import { IoMdBookmark } from "react-icons/io";
+import { AuthContext } from "../context/AuthContext";
 
 const Jobs = ({ jobs }) => {
+  const { user } = use(AuthContext);
+  const email = user.email;
+
   const { _id, company_log, title, company, jobType, workplace, location } =
     jobs;
+  const [favorite, setFavorite] = useState([]);
   //   console.log(jobs);
+  const instance = useAxios();
 
+  const handelBookMark = (_id) => {
+    // console.log("book mark", _id);
+    instance
+      .post("/favoriteJob", {
+        logo: company_log,
+        email: email,
+        jobId: _id,
+        title: title,
+        company: company,
+        jobType: jobType,
+        workplace: workplace,
+        location: location,
+        favorite: "true",
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.acknowledged) {
+          setFavorite((prev) => [...prev, _id]);
+        }
+      });
+  };
+  // console.log(favorite);
   return (
     <div className="list rounded-box shadow-md ">
       <li className="list-row">
@@ -38,11 +68,19 @@ const Jobs = ({ jobs }) => {
             </div>
           </div>
         </div>
-        <button className="cursor-pointer">
-          <CiBookmark size={25} />
+        <button
+          onClick={() => handelBookMark(_id)}
+          disabled={favorite.includes(_id)}
+          className={`text-2xl  ${
+            favorite.includes(_id)
+              ? "text-black  cursor-not-allowed"
+              : "text-gray-400 cursor-pointer"
+          }`}
+        >
+          <IoMdBookmark />
         </button>
       </li>
-      <Link className="btn cursor-pointer" to={`/jobsDetails/${_id}`}>
+      <Link className="btn cursor-pointer " to={`/jobsDetails/${_id}`}>
         view details
       </Link>
     </div>

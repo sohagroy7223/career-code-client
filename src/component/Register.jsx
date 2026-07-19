@@ -35,8 +35,8 @@ const Register = () => {
           email: email,
           image: image,
         })
-        .then((data) => {
-          console.log(data);
+        .then((res) => {
+          console.log(res.data);
         });
     });
   };

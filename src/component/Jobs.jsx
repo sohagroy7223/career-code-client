@@ -12,12 +12,12 @@ import { AuthContext } from "../context/AuthContext";
 const Jobs = ({ jobs, setFavorite, favorite }) => {
   const { user } = use(AuthContext);
   const email = user.email;
+  const instance = useAxios();
 
   const { _id, company_log, title, company, jobType, workplace, location } =
     jobs;
 
   // console.log(favorite);
-  const instance = useAxios();
 
   const handelBookMark = (_id) => {
     // console.log("book mark", _id);
@@ -34,7 +34,7 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
         favorite: "true",
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           setFavorite((prev) => [...prev, _id]);
         }

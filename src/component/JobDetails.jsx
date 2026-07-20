@@ -12,7 +12,7 @@ const JobDetails = () => {
   const back = () => {
     navigate(-1);
   };
-  console.log(data);
+  // console.log(data);
   const {
     applicationDeadline,
     category,

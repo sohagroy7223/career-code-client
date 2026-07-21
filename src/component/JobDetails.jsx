@@ -4,7 +4,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
-import { useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 
 const JobDetails = () => {
   const data = useLoaderData();
@@ -68,7 +68,9 @@ const JobDetails = () => {
             </div>
           </div>
           <div className="flex justify-center items-center ">
-            <button className="btn bg-primary text-gray-100">Apply Now</button>
+            <Link to="/application" className="btn bg-primary text-gray-100">
+              Apply Now
+            </Link>
           </div>
         </li>
       </div>

@@ -13,6 +13,7 @@ import Register from "../component/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import JobDetails from "../component/JobDetails";
 import FavoriteJobs from "../component/FavoriteJobs";
+import Form from "../component/Form";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PostJob></PostJob>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/application",
+        element: (
+          <PrivateRoute>
+            <Form></Form>
           </PrivateRoute>
         ),
       },

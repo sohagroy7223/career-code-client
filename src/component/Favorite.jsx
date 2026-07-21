@@ -2,20 +2,23 @@ import React from "react";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
+import { Link } from "react-router";
 
 const Favorite = ({ favorite }) => {
-  const { _id, logo, title, company, jobType, workplace, location } = favorite;
+  //   console.log(favorite);
+  const { jobId, logo, title, company, jobType, workplace, location } =
+    favorite;
   return (
-    <div className="list bg-base-100 rounded-box shadow-md ">
+    <div className="list rounded-box shadow-md ">
       <li className="list-row">
         <div>
           <img className="size-15 rounded-box" src={logo} />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-5">
           <h3 className="text-2xl font-bold">{title}</h3>
           <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
             {company}
-            <div className=" gap-14 space-y-4 ">
+            <div className="md:flex gap-14 space-y-3 md:space-y-0">
               <p className="flex gap-2 items-center">
                 <MdHourglassFull size={15} />
                 {jobType}
@@ -32,10 +35,10 @@ const Favorite = ({ favorite }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center ">
-          <button className="btn bg-primary text-gray-100">Apply Now</button>
-        </div>
       </li>
+      <Link className="btn cursor-pointer " to={`/jobsDetails/${jobId}`}>
+        view details
+      </Link>
     </div>
   );
 };

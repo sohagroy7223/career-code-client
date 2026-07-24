@@ -16,7 +16,7 @@ const Banner = () => {
         <p className="text-primary p-2 bg-white w-40 rounded-2xl">
           find your Dream job
         </p>
-        <h3 className="text-5xl font-bold">
+        <h3 className="md:text-5xl text-3xl font-bold text-center md:text-start">
           Discover Endless Career{" "}
           <span className="text-primary">Opportunities</span>{" "}
         </h3>

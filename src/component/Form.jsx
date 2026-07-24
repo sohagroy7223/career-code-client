@@ -1,12 +1,17 @@
-import React from "react";
+import React, { use } from "react";
 import logo from "../assets/careerCode.png";
 import { FaCode, FaRegUser } from "react-icons/fa";
 import { HiLink } from "react-icons/hi";
 import { FaClipboardUser } from "react-icons/fa6";
 import { IoDocumentText } from "react-icons/io5";
 import { MdCloudUpload } from "react-icons/md";
+import useAxios from "../Hook/useAxios";
+import { AuthContext } from "../context/AuthContext";
 
 const Form = () => {
+  const { user } = use(AuthContext);
+  //   console.log(user);
+  const instance = useAxios();
   const handelApplicationSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -18,22 +23,38 @@ const Form = () => {
     const portfolio = e.target.portfolio.value;
     const github = e.target.github.value;
     const linkedin = e.target.linkedin.value;
-    const document = e.target.document.files[0];
-    const url = URL.createObjectURL(document);
+    // const resume = e.target.resume.files[0];
     const coverLater = e.target.coverLater.value;
-    console.log(
-      name,
-      email,
-      number,
-      position,
-      experience,
-      skill,
-      portfolio,
-      github,
-      linkedin,
-      url,
-      coverLater,
-    );
+
+    const application = {
+      name: name,
+      email: email,
+      phone: number,
+      position: position,
+      experience: experience,
+      skill: skill,
+      portfolio: portfolio,
+      github: github,
+      linkedin: linkedin,
+      coverLater: coverLater,
+    };
+
+    instance.post("/application", application).then((res) => {
+      res.data;
+    });
+
+    // console.log(
+    //   name,
+    //   email,
+    //   number,
+    //   position,
+    //   experience,
+    //   skill,
+    //   portfolio,
+    //   github,
+    //   linkedin,
+    //   coverLater,
+    // );
   };
 
   return (
@@ -71,6 +92,8 @@ const Form = () => {
                   type="text"
                   className="input"
                   name="name"
+                  value={user.displayName}
+                  required
                   placeholder="Enter your full name"
                 />
               </div>
@@ -82,6 +105,8 @@ const Form = () => {
                   type="email"
                   className="input"
                   name="email"
+                  value={user.email}
+                  required
                   placeholder="Enter your email"
                 />
               </div>
@@ -93,6 +118,7 @@ const Form = () => {
                   type="number"
                   className="input"
                   name="number"
+                  required
                   placeholder="Enter your Phone Number"
                 />
               </div>
@@ -116,7 +142,7 @@ const Form = () => {
                       Position Applying For :
                     </label>
                     <select
-                      defaultValue="Pick a Framework"
+                      value="Pick a Framework"
                       className="select select-info "
                       name="position"
                     >
@@ -134,6 +160,7 @@ const Form = () => {
                       type="text"
                       className="input"
                       name="experience"
+                      required
                       placeholder="your job experience year"
                     />
                   </div>
@@ -143,6 +170,7 @@ const Form = () => {
                       type="text"
                       className="input"
                       name="skill"
+                      required
                       placeholder="React,Node.js, MongoDB, Tailwind CSS"
                     />
                   </div>
@@ -169,6 +197,7 @@ const Form = () => {
                   type="text"
                   className="input"
                   name="portfolio"
+                  required
                   placeholder="https://yourportfolio.com"
                 />
               </div>
@@ -180,6 +209,7 @@ const Form = () => {
                   type="text"
                   className="input"
                   name="github"
+                  required
                   placeholder="http[s://github.com/username"
                 />
               </div>
@@ -191,6 +221,7 @@ const Form = () => {
                   type="text"
                   className="input"
                   name="linkedin"
+                  required
                   placeholder="https://linkedin.com/in/username"
                 />
               </div>
@@ -205,7 +236,7 @@ const Form = () => {
                 </div>
               </div>
 
-              <input type="file" name="document" className="file-input mt-10" />
+              <input type="file" name="resume" className="file-input mt-10" />
 
               <div>
                 <label className="label md:text-2xl text-lg ">

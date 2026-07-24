@@ -14,6 +14,7 @@ const JobDetails = () => {
   };
   // console.log(data);
   const {
+    _id,
     applicationDeadline,
     category,
     company,
@@ -68,7 +69,10 @@ const JobDetails = () => {
             </div>
           </div>
           <div className="flex justify-center items-center ">
-            <Link to="/application" className="btn bg-primary text-gray-100">
+            <Link
+              to={`/application/${_id}`}
+              className="btn bg-primary text-gray-100"
+            >
               Apply Now
             </Link>
           </div>

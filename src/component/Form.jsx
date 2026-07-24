@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import logo from "../assets/careerCode.png";
 import { FaCode, FaRegUser } from "react-icons/fa";
 import { HiLink } from "react-icons/hi";
@@ -8,11 +8,22 @@ import { MdCloudUpload } from "react-icons/md";
 import useAxios from "../Hook/useAxios";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { useParams } from "react-router";
 
 const Form = () => {
+  const [job, setJob] = useState({});
   const { user } = use(AuthContext);
+  const { id } = useParams();
+
   //   console.log(user);
   const instance = useAxios();
+
+  useEffect(() => {
+    instance.get(`/jobs/${id}`).then((res) => {
+      setJob(res.data);
+    });
+  }, []);
+  //   console.log(job);
   const handelApplicationSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -38,6 +49,15 @@ const Form = () => {
       github: github,
       linkedin: linkedin,
       coverLater: coverLater,
+
+      // Job Information
+      jobId: job._id,
+      title: job.title,
+      company: job.company,
+      companyLogo: job.company_log,
+      location: job.location,
+      jobType: job.jobType,
+      workplace: job.workplace,
     };
 
     instance.post("/application", application).then((res) => {
@@ -45,7 +65,7 @@ const Form = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Your application has been submitted",
           showConfirmButton: false,
           timer: 1500,
         });

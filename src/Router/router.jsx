@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/application",
+        path: "/application/:id",
         element: (
           <PrivateRoute>
             <Form></Form>

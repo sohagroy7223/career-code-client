@@ -54,6 +54,16 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
               }
+              to="myApplication"
+            >
+              Applied Jobs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "mr-4 font-bold text-blue-500 underline" : "mr-4"
+              }
               to="postJob"
             >
               Post Job

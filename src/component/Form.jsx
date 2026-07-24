@@ -7,6 +7,7 @@ import { IoDocumentText } from "react-icons/io5";
 import { MdCloudUpload } from "react-icons/md";
 import useAxios from "../Hook/useAxios";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Form = () => {
   const { user } = use(AuthContext);
@@ -40,7 +41,15 @@ const Form = () => {
     };
 
     instance.post("/application", application).then((res) => {
-      res.data;
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
 
     // console.log(
@@ -92,7 +101,7 @@ const Form = () => {
                   type="text"
                   className="input"
                   name="name"
-                  value={user.displayName}
+                  defaultValue={user.displayName}
                   required
                   placeholder="Enter your full name"
                 />
@@ -105,7 +114,7 @@ const Form = () => {
                   type="email"
                   className="input"
                   name="email"
-                  value={user.email}
+                  defaultValue={user.email}
                   required
                   placeholder="Enter your email"
                 />
@@ -142,7 +151,7 @@ const Form = () => {
                       Position Applying For :
                     </label>
                     <select
-                      value="Pick a Framework"
+                      defaultValue="Pick a Framework"
                       className="select select-info "
                       name="position"
                     >

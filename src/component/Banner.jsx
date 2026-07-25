@@ -8,7 +8,7 @@ const Banner = () => {
     navigate("allJobs");
   };
   const PostJob = () => {
-    navigate("addJob");
+    navigate("postJob");
   };
   return (
     <div className="md:flex justify-center items-center p-8 ">

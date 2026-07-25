@@ -113,12 +113,14 @@ const MyAllApplication = ({ apply }) => {
           )}
         </div>
 
-        <button
-          onClick={handelBtnToggle}
-          className="btn cursor-pointer bg-primary text-gray-100"
-        >
-          {showDetails ? "Hide Details" : "view details"}
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={handelBtnToggle}
+            className="btn cursor-pointer bg-primary text-gray-100"
+          >
+            {showDetails ? "Hide Details" : "view details"}
+          </button>
+        </div>
       </li>
     </div>
   );

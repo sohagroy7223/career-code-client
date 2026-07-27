@@ -109,7 +109,7 @@ const JobDetails = () => {
               Hr Name: <span className="font-bold">{hr_name}</span>
             </h3>
             <h3>
-              Hr Name: <span className="font-bold">{hr_email}</span>
+              Hr Email: <span className="font-bold">{hr_email}</span>
             </h3>
           </div>
           <div>

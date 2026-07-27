@@ -39,6 +39,7 @@ const AddJob = () => {
       requirements: requirements,
       email: user.email,
     };
+    // console.log(job);
     instance.post("/jobs", job).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {
@@ -55,7 +56,7 @@ const AddJob = () => {
   return (
     <div>
       <h3 className="text-2xl text-center font-bold px-3">
-        add <span className="text-primary">job</span>{" "}
+        Add <span className="text-primary">Job</span>{" "}
       </h3>
       <form onSubmit={handelAddJob}>
         <div className="md:flex gap-5 w-full px-3 mt-8">

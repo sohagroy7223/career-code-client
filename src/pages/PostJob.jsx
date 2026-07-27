@@ -33,9 +33,14 @@ const PostJob = () => {
           Add new Job
         </button>
       </div>
-      <div>
+      <div className="space-y-3 mt-10">
         {postedJobs.map((jobs) => (
-          <AllPostedJobs key={jobs._id} jobs={jobs}></AllPostedJobs>
+          <AllPostedJobs
+            key={jobs._id}
+            postedJobs={postedJobs}
+            setPostedJobs={setPostedJobs}
+            jobs={jobs}
+          ></AllPostedJobs>
         ))}
       </div>
     </div>

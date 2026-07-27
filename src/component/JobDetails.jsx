@@ -120,27 +120,27 @@ const JobDetails = () => {
         </div>
         <div className=" p-5 md:w-[30%] bg-gray-100 rounded-lg space-y-5">
           <h3 className="font-bold text-center text-lg">Job Details</h3>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className="text-lg">Job Title : </p>
             <h3 className="font-bold text-lg">{title}</h3>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className="text-lg">Company : </p>
             <h3 className="font-bold text-lg">{company}</h3>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className="text-lg">Job Type : </p>
             <h3 className="font-bold text-lg">{jobType}</h3>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className="text-lg"> Work Place : </p>
             <h3 className="font-bold text-lg">{workplace}</h3>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className=" text-lg"> Job Location : </p>
             <h3 className="font-bold text-lg">{location}</h3>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <p className=" text-lg">Salary : </p>
             <h3 className="font-bold text-lg">{salary}</h3>
           </div>

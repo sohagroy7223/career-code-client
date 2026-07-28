@@ -16,9 +16,18 @@ const FavoriteJobs = () => {
   //   console.log(favoriteJobs);
   return (
     <div>
-      {favoriteJobs.map((favorite) => (
-        <Favorite key={favorite._id} favorite={favorite}></Favorite>
-      ))}
+      {favoriteJobs.length === 0 ? (
+        <div className="flex flex-col justify-center items-center">
+          <img className="w-52" src="imageJobs.png" alt="" />
+          <h3 className="text-4xl text-center py-5 font-bold">
+            Not found any <br /> Favorite jobs here
+          </h3>
+        </div>
+      ) : (
+        favoriteJobs.map((favorite) => (
+          <Favorite key={favorite._id} favorite={favorite}></Favorite>
+        ))
+      )}
     </div>
   );
 };

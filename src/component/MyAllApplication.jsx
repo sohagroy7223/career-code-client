@@ -113,10 +113,10 @@ const MyAllApplication = ({ apply }) => {
           )}
         </div>
 
-        <div className="flex justify-center ">
+        <div className="flex justify-center  gap-3">
           <button
             onClick={handelBtnToggle}
-            className="btn cursor-pointer bg-primary text-gray-100"
+            className="btn btn-outline   cursor-pointer "
           >
             {showDetails ? "Hide Details" : "view details"}
           </button>

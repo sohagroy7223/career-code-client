@@ -120,6 +120,7 @@ const JobDetails = () => {
         </div>
         <div className=" p-5 md:w-[30%] bg-gray-100 rounded-lg space-y-5">
           <h3 className="font-bold text-center text-lg">Job Details</h3>
+          <hr className="text-gray-500 border-dashed" />
           <div className="flex flex-wrap gap-2">
             <p className="text-lg">Job Title : </p>
             <h3 className="font-bold text-lg">{title}</h3>

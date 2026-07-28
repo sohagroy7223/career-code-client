@@ -8,6 +8,7 @@ import { Link } from "react-router";
 import useAxios from "../Hook/useAxios";
 import { IoMdBookmark } from "react-icons/io";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Jobs = ({ jobs, setFavorite, favorite }) => {
   const { user } = use(AuthContext);
@@ -20,25 +21,46 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
   // console.log(favorite);
 
   const handelBookMark = (_id) => {
-    // console.log("book mark", _id);
-    instance
-      .post("/favoriteJob", {
-        logo: company_log,
-        email: email,
-        jobId: _id,
-        title: title,
-        company: company,
-        jobType: jobType,
-        workplace: workplace,
-        location: location,
-        favorite: "true",
-      })
-      .then((res) => {
-        // console.log(res.data);
-        if (res.data.insertedId) {
-          setFavorite((prev) => [...prev, _id]);
-        }
-      });
+    const isFavorite = favorite.includes(_id);
+
+    if (isFavorite) {
+      instance
+        .delete(`/favoriteJob`, {
+          data: {
+            email,
+            jobId: _id,
+          },
+        })
+        .then((res) => {
+          if (res.data.deletedCount > 0) {
+            setFavorite((prev) => prev.filter((id) => id !== _id));
+          }
+        });
+    } else {
+      instance
+        .post("/favoriteJob", {
+          logo: company_log,
+          email,
+          jobId: _id,
+          title,
+          company,
+          jobType,
+          workplace,
+          location,
+        })
+        .then((res) => {
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Add job has been success",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setFavorite((prev) => [...prev, _id]);
+          }
+        });
+    }
   };
   // console.log(favorite);
   return (
@@ -70,12 +92,12 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
         </div>
         <button
           onClick={() => handelBookMark(_id)}
-          disabled={favorite.includes(_id)}
-          className={`text-2xl  ${
+          className={`text-2xl tooltip  ${
             favorite.includes(_id)
-              ? "text-black  cursor-not-allowed"
+              ? "text-black "
               : "text-gray-400 cursor-pointer"
           }`}
+          data-tip={`${favorite.includes(_id) ? "remove to favorite" : "Add to Favorite"}`}
         >
           <IoMdBookmark />
         </button>

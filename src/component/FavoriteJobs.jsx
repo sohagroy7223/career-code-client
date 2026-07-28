@@ -24,9 +24,11 @@ const FavoriteJobs = () => {
           </h3>
         </div>
       ) : (
-        favoriteJobs.map((favorite) => (
-          <Favorite key={favorite._id} favorite={favorite}></Favorite>
-        ))
+        <div className="md:flex md:flex-col gap-5">
+          {favoriteJobs.map((favorite) => (
+            <Favorite key={favorite._id} favorite={favorite}></Favorite>
+          ))}
+        </div>
       )}
     </div>
   );

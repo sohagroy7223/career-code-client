@@ -37,6 +37,7 @@ const AddJob = () => {
       description: description,
       responsibilities: responsibilities,
       requirements: requirements,
+      applicationDeadline: new Date().toDateString(),
       email: user.email,
     };
     // console.log(job);

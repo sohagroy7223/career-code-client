@@ -113,7 +113,7 @@ const MyAllApplication = ({ apply }) => {
           )}
         </div>
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center ">
           <button
             onClick={handelBtnToggle}
             className="btn cursor-pointer bg-primary text-gray-100"

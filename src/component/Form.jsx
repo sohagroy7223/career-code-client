@@ -49,7 +49,6 @@ const Form = () => {
       github: github,
       linkedin: linkedin,
       coverLater: coverLater,
-
       // Job Information
       jobId: job._id,
       title: job.title,
@@ -59,7 +58,7 @@ const Form = () => {
       jobType: job.jobType,
       workplace: job.workplace,
     };
-
+    console.log(application);
     instance.post("/application", application).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({

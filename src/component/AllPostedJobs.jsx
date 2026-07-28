@@ -5,7 +5,7 @@ import { VscRemoteExplorer } from "react-icons/vsc";
 import useAxios from "../Hook/useAxios";
 import Swal from "sweetalert2";
 
-const AllPostedJobs = ({ jobs, setPostedJobs, postedJobs }) => {
+const AllPostedJobs = ({ jobs, setPostedJobs, postedJobs, setTotal }) => {
   const { _id, company_log, company, title, jobType, workplace, location } =
     jobs;
   const instance = useAxios();
@@ -31,6 +31,7 @@ const AllPostedJobs = ({ jobs, setPostedJobs, postedJobs }) => {
             });
             const remainingJobs = postedJobs.filter((job) => job._id != id);
             setPostedJobs(remainingJobs);
+            setTotal(remainingJobs);
           }
         });
       }

@@ -16,7 +16,7 @@ const AddJob = () => {
     const type = e.target.type.value;
     const max = e.target.maxSalary.value;
     const min = e.target.minSalary.value;
-    const salary = `${max}-${min}`;
+    const salary = `${min}-${max}`;
     const experience = e.target.experience.value;
     const workPlace = e.target.workPlace.value;
     const company_logo = e.target.company_logo.value;

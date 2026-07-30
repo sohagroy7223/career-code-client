@@ -30,14 +30,14 @@ const MyAllApplication = ({ apply }) => {
   };
 
   return (
-    <div className="list rounded-box shadow-md border border-primary border-dashed">
-      <li className="list-row">
-        <div>
+    <div className="list  rounded-box shadow-md border border-primary border-dashed ">
+      <li className="list-row ">
+        <div className="">
           <img className="size-15 rounded-box" src={companyLogo} />
         </div>
         <div className="space-y-5">
           <h3 className="text-2xl font-bold">{title}</h3>
-          <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
+          <div className="text-xs uppercase font-semibold opacity-60 flex gap-20 ">
             {company}
             <div className="md:flex gap-14 space-y-3 md:space-y-0">
               <p className="flex gap-2 items-center">
@@ -56,9 +56,9 @@ const MyAllApplication = ({ apply }) => {
             </div>
           </div>
           {showDetails && (
-            <div className="mt-5 pt-4 flex justify-center gap-5 bg-gray-100 rounded-2xl">
-              <div className="space-y-3 p-3 border-r border-primary border-dashed">
-                <h3 className="flex items-center gap-3 text-2xl font-medium">
+            <div className="mt-5 max-w-full bg-gray-200 pt-4 md:flex md:justify-center gap-5 rounded-2xl">
+              <div className="space-y-3 p-3 md:border-r border-primary border-dashed">
+                <h3 className="flex items-center gap-3 text-2xl  font-medium">
                   <FaUserCircle size={25} />
                   Personal Information
                 </h3>

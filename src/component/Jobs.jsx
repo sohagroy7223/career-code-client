@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
 import { MdHourglassFull } from "react-icons/md";
 import { VscRemoteExplorer } from "react-icons/vsc";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import useAxios from "../Hook/useAxios";
 import { IoMdBookmark } from "react-icons/io";
 import { AuthContext } from "../context/AuthContext";
@@ -12,7 +12,8 @@ import Swal from "sweetalert2";
 
 const Jobs = ({ jobs, setFavorite, favorite }) => {
   const { user } = use(AuthContext);
-  const email = user.email;
+  const navigate = useNavigate();
+  // const email = user.email;
   const instance = useAxios();
 
   const { _id, company_log, title, company, jobType, workplace, location } =
@@ -37,29 +38,31 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
           }
         });
     } else {
-      instance
-        .post("/favoriteJob", {
-          logo: company_log,
-          email,
-          jobId: _id,
-          title,
-          company,
-          jobType,
-          workplace,
-          location,
-        })
-        .then((res) => {
-          if (res.data.insertedId) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Add job has been success",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            setFavorite((prev) => [...prev, _id]);
-          }
-        });
+      user
+        ? instance
+            .post("/favoriteJob", {
+              logo: company_log,
+              email: user.email,
+              jobId: _id,
+              title,
+              company,
+              jobType,
+              workplace,
+              location,
+            })
+            .then((res) => {
+              if (res.data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "your job has been favorite",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                setFavorite((prev) => [...prev, _id]);
+              }
+            })
+        : navigate("/login");
     }
   };
   // console.log(favorite);

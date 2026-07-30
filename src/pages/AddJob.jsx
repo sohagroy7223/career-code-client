@@ -56,9 +56,11 @@ const AddJob = () => {
   };
   return (
     <div>
-      <h3 className="text-2xl text-center font-bold px-3">
-        Add <span className="text-primary">Job</span>{" "}
-      </h3>
+      <div className="p-2">
+        <h3 className="text-xl font-bold">Post A Job</h3>
+        <p>And Manage your all post jobs</p>
+      </div>
+
       <form onSubmit={handelAddJob}>
         <div className="md:flex gap-5 w-full px-3 mt-8">
           <div className="md:w-6/12">

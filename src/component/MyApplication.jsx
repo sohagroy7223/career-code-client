@@ -16,10 +16,15 @@ const MyApplication = () => {
   //   console.log(application);
   return (
     <div>
-      <h3 className="text-2xl font-bold text-center">
-        All <span className="text-primary ">Application</span>
-      </h3>
-      <hr className="text-gray-300 divide-dotted" />
+      <div>
+        <div className="md:text-center p-2">
+          <h3 className="text-2xl font-bold md:text-center p-2">
+            All <span className="text-primary ">Application</span>
+          </h3>
+          <p>Manage your all Applied jobs</p>
+        </div>
+      </div>
+
       <div className="mt-10 space-y-10">
         {application.length === 0 ? (
           <div className="flex flex-col justify-center items-center">

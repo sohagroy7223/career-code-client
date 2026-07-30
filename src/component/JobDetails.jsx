@@ -49,9 +49,9 @@ const JobDetails = () => {
           </div>
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">{title}</h3>
-            <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
+            <div className="text-xs uppercase font-semibold opacity-60 md:flex gap-29 ">
               {company}
-              <div className=" gap-14 space-y-4 ">
+              <div className=" gap-14 space-y-4 mt-5 md:mt-0">
                 <p className="flex gap-2 items-center">
                   <MdHourglassFull size={15} />
                   {jobType}

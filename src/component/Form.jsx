@@ -9,6 +9,7 @@ import useAxios from "../Hook/useAxios";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { useParams } from "react-router";
+import useAxiosSecure from "../Hook/UseAxiosSecure";
 
 const Form = () => {
   const [job, setJob] = useState({});
@@ -17,6 +18,7 @@ const Form = () => {
 
   //   console.log(user);
   const instance = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     instance.get(`/jobs/${id}`).then((res) => {
@@ -58,17 +60,9 @@ const Form = () => {
       jobType: job.jobType,
       workplace: job.workplace,
     };
-    console.log(application);
-    instance.post("/application", application).then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your application has been submitted",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
+    // console.log(application);
+    axiosSecure.post("/application", application).then((res) => {
+      console.log("after secure call", res.data);
     });
 
     // console.log(

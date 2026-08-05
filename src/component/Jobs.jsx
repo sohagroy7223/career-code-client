@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 const Jobs = ({ jobs, setFavorite, favorite }) => {
   const { user } = use(AuthContext);
   const navigate = useNavigate();
-  const email = user.email;
+  const email = user?.email;
   const instance = useAxios();
 
   const { _id, company_log, title, company, jobType, workplace, location } =
@@ -28,7 +28,7 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
       instance
         .delete(`/favoriteJob`, {
           data: {
-            email: user.email,
+            email: user?.email,
             jobId: _id,
           },
         })
@@ -42,7 +42,7 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
         ? instance
             .post("/favoriteJob", {
               logo: company_log,
-              email: user.email,
+              email: user?.email,
               jobId: _id,
               title,
               company,

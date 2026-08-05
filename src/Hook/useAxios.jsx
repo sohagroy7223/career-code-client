@@ -11,7 +11,9 @@ const useAxios = () => {
 
   useEffect(() => {
     const decode = instance.interceptors.request.use((config) => {
-      config.headers.authorization = `Bearer ${user.accessToken}`;
+      if (user?.accessToken) {
+        config.headers.authorization = `Bearer ${user?.accessToken}`;
+      }
       return config;
     });
     return () => {

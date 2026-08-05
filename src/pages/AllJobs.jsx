@@ -30,7 +30,7 @@ const AllJobs = () => {
 
   useEffect(() => {
     if (user?.email) {
-      instance.get(`/favoriteJob?email=${user.email}`).then((res) => {
+      instance.get(`/favoriteJob?email=${user?.email}`).then((res) => {
         // console.log(res.data);
         const favoriteId = res.data.map((item) => item.jobId);
         setFavorite(favoriteId);

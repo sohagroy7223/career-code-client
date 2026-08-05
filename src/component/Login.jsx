@@ -15,7 +15,7 @@ const Login = () => {
     const password = e.target.password.value;
     // console.log(email, password);
     loginUser(email, password).then((result) => {
-      console.log(result);
+      // console.log(result);
       navigate("/");
     });
   };
@@ -26,9 +26,9 @@ const Login = () => {
       navigate("/");
       instance
         .post("/users", {
-          displayName: `${result.user.displayName}`,
-          email: `${result.user.email}`,
-          image: `${result.user.photoURL}`,
+          displayName: `${result.user?.displayName}`,
+          email: `${result.user?.email}`,
+          image: `${result.user?.photoURL}`,
         })
         .then((data) => {
           console.log(data);

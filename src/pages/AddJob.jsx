@@ -57,7 +57,9 @@ const AddJob = () => {
   return (
     <div>
       <div className="p-2">
-        <h3 className="text-xl font-bold">Post A Job</h3>
+        <h3 className="text-xl font-bold">
+          Post A <span className="text-primary">Job</span>
+        </h3>
         <p>And Manage your all post jobs</p>
       </div>
 

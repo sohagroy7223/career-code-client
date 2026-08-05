@@ -29,7 +29,7 @@ const Banner = () => {
             Browser All jobs
           </button>
           <button onClick={PostJob} className="btn btn-neutral btn-outline">
-            Post a Job
+            Post A Job
           </button>
         </div>
       </div>

@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: "/jobsDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/jobs/${params.id}`),
+          fetch(`https://career-code-server-2.onrender.com/jobs/${params.id}`),
         element: (
           <PrivateRoute>
             <JobDetails></JobDetails>

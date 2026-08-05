@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://career-code-server-2.onrender.com/",
 });
 import React, { useEffect } from "react";
 import useAuth from "./useAuth";

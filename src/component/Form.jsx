@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router";
 
 import { AuthContext } from "../context/AuthContext";
-import useAxiosSecure from "../Hook/UseAxiosSecure";
 
 const Form = () => {
   const [job, setJob] = useState({});
@@ -20,7 +19,6 @@ const Form = () => {
 
   //   console.log(user);
   const instance = useAxios();
-  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     instance.get(`/jobs/${id}`).then((res) => {

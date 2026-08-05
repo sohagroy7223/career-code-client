@@ -25,7 +25,9 @@ const PostJob = () => {
     <div>
       <div className="flex justify-between px-5 items-center">
         <div>
-          <h3 className="text-xl font-bold">My Posted Jobs</h3>
+          <h3 className="text-xl font-bold">
+            My <span className="text-primary">Posted</span> Jobs
+          </h3>
           <p>Manage your all posted jobs</p>
         </div>
         <button

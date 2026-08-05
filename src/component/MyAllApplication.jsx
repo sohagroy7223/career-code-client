@@ -57,7 +57,7 @@ const MyAllApplication = ({ apply }) => {
           </div>
           {showDetails && (
             <div className="mt-5 max-w-full bg-gray-200 pt-4 md:flex md:justify-center gap-5 rounded-2xl">
-              <div className="space-y-3 p-3 md:border-r border-primary border-dashed">
+              <div className="space-y-3 p-3 md:w-6/12 md:border-r border-primary border-dashed">
                 <h3 className="flex items-center gap-3 text-2xl  font-medium">
                   <FaUserCircle size={25} />
                   Personal Information
@@ -102,7 +102,7 @@ const MyAllApplication = ({ apply }) => {
                   </span>
                 </p>
               </div>
-              <div className="space-y-3 p-3">
+              <div className="space-y-3 p-3 md:w-6/12">
                 <h3 className="flex  gap-3 text-2xl font-medium">
                   <IoDocument size={25} />
                   Cover Letter

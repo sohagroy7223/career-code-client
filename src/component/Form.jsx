@@ -6,9 +6,11 @@ import { FaClipboardUser } from "react-icons/fa6";
 import { IoDocumentText } from "react-icons/io5";
 import { MdCloudUpload } from "react-icons/md";
 import useAxios from "../Hook/useAxios";
-import { AuthContext } from "../context/AuthContext";
+
 import Swal from "sweetalert2";
 import { useParams } from "react-router";
+
+import { AuthContext } from "../context/AuthContext";
 import useAxiosSecure from "../Hook/UseAxiosSecure";
 
 const Form = () => {
@@ -61,8 +63,17 @@ const Form = () => {
       workplace: job.workplace,
     };
     // console.log(application);
-    axiosSecure.post("/application", application).then((res) => {
+    instance.post("/application", application).then((res) => {
       console.log("after secure call", res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your application has been submitted",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
 
     // console.log(
@@ -80,7 +91,7 @@ const Form = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 border">
       <div className="space-y-4 flex flex-col justify-center items-center">
         <h2 className="flex items-center gap-4 text-2xl font-bold">
           <FaCode size={25}></FaCode>{" "}
@@ -89,14 +100,15 @@ const Form = () => {
         <h3 className="md:text-3xl text-lg font-black">
           Developer Application <span className="text-primary">Form</span>
         </h3>
-        <p className="text-gray-600 md:text-lg ">
+        <p className="text-gray-600 md:text-lg text-center">
           Fill in the details below to apply for the position. We'll get back to{" "}
           <br></br>
           you if your profile matches our Requirements
         </p>
       </div>
+      <hr className="w-11/12 mx-auto border-dashed text-gray-400" />
       <form onSubmit={handelApplicationSubmit}>
-        <div className="w-11/12 mx-auto md:flex border p-4 gap-4 ">
+        <div className="w-11/12 mx-auto md:flex  p-4 gap-4 ">
           <div className="md:w-6/12 p-2 ">
             <div className="flex gap-3 items-center ">
               <div className="bg-blue-100 w-12 p-3 rounded-full border">
@@ -232,7 +244,7 @@ const Form = () => {
                   className="input"
                   name="github"
                   required
-                  placeholder="http[s://github.com/username"
+                  placeholder="https://github.com/username"
                 />
               </div>
               <div className="fieldset">
@@ -273,7 +285,7 @@ const Form = () => {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center ">
+        <div className="w-full flex justify-center py-2">
           <button className="btn bg-primary text-gray-50">
             Submit Application
           </button>

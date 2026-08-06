@@ -40,7 +40,7 @@ const MyAllApplication = ({ apply }) => {
           <h3 className="md:text-2xl text-md font-bold">{title}</h3>
           <div className="text-xs uppercase font-semibold opacity-60 md:flex md:gap-29  ">
             <span>{company}</span>
-            <div className="md:flex gap-14 space-y-3 md:space-y-0">
+            <div className="md:flex gap-14 space-y-3 md:space-y-0 mt-3 md:mt-0">
               <p className="flex gap-2 items-center">
                 <MdHourglassFull size={15} />
                 {jobType}

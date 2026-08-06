@@ -73,10 +73,10 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
           <img className="size-15 rounded-box" src={company_log} />
         </div>
         <div className="space-y-5">
-          <h3 className="text-2xl font-bold">{title}</h3>
-          <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
-            {company}
-            <div className="md:flex gap-14 space-y-3 md:space-y-0">
+          <h3 className="md:text-2xl text-md font-bold">{title}</h3>
+          <div className="text-xs uppercase font-semibold opacity-60 md:flex md:gap-29 ">
+            <span> {company}</span>
+            <div className="md:flex md:gap-14 space-y-3 md:space-y-0 mt-3 md:mt-0">
               <p className="flex gap-2 items-center">
                 <MdHourglassFull size={15} />
                 {jobType}
@@ -105,7 +105,7 @@ const Jobs = ({ jobs, setFavorite, favorite }) => {
           <IoMdBookmark />
         </button>
       </li>
-      <Link className="btn cursor-pointer " to={`/jobsDetails/${_id}`}>
+      <Link className="btn  cursor-pointer " to={`/jobsDetails/${_id}`}>
         view details
       </Link>
     </div>

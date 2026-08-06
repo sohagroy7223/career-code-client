@@ -43,11 +43,11 @@ const AllPostedJobs = ({ jobs, setPostedJobs, postedJobs, setTotal }) => {
         <div>
           <img className="size-15 rounded-box" src={company_log} />
         </div>
-        <div className="space-y-4">
-          <h3 className="text-2xl font-bold">{title}</h3>
-          <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
-            {company}
-            <div className=" gap-14 space-y-4 ">
+        <div className="space-y-4 ">
+          <h3 className="md:text-2xl font-bold text-md ">{title}</h3>
+          <div className="text-xs uppercase font-semibold opacity-60 md:flex md:gap-29">
+            <span>{company}</span>
+            <div className="md:flex md:gap-14 space-y-3 md:space-y-0 mt-3 md:mt-0">
               <p className="flex gap-2 items-center">
                 <MdHourglassFull size={15} />
                 {jobType}
@@ -65,8 +65,11 @@ const AllPostedJobs = ({ jobs, setPostedJobs, postedJobs, setTotal }) => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-2">
-          <button className="btn btn-outline">edit</button>
-          <button onClick={() => handelDelete(_id)} className="btn btn-outline">
+          <button className="btn  btn-xs btn-outline">edit</button>
+          <button
+            onClick={() => handelDelete(_id)}
+            className="btn btn-xs btn-outline"
+          >
             delete
           </button>
         </div>

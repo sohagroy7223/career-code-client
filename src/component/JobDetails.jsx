@@ -48,8 +48,8 @@ const JobDetails = () => {
             <img className="size-15 rounded-box" src={company_log} />
           </div>
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <div className="text-xs uppercase font-semibold opacity-60 md:flex gap-29 ">
+            <h3 className="md:text-2xl text-md font-bold">{title}</h3>
+            <div className="text-xs uppercase font-semibold opacity-60 md:flex md:gap-29 ">
               {company}
               <div className=" gap-14 space-y-4 mt-5 md:mt-0">
                 <p className="flex gap-2 items-center">
@@ -71,7 +71,7 @@ const JobDetails = () => {
           <div className="flex justify-center items-center ">
             <Link
               to={`/application/${_id}`}
-              className="btn bg-primary text-gray-100"
+              className="btn bg-primary btn-sm text-gray-100"
             >
               Apply Now
             </Link>

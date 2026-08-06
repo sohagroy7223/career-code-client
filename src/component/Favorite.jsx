@@ -12,30 +12,28 @@ const Favorite = ({ favorite }) => {
 
   return (
     <div className="list rounded-box shadow-md border border-dashed border-gray-300 mt-10">
-      <li className="list-row flex justify-between items-center ">
-        <div className="md:flex gap-14 space-y-3 md:space-y-0 ">
-          <div>
-            <img className="size-15 rounded-box" src={logo} />
-          </div>
-          <div className="space-y-5 ">
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <div className="text-xs uppercase font-semibold opacity-60 flex gap-29 ">
-              {company}
-              <div className="md:flex gap-14 space-y-3 md:space-y-0">
-                <p className="flex gap-2 items-center">
-                  <MdHourglassFull size={15} />
-                  {jobType}
-                </p>
-                <p className="flex gap-2 items-center">
-                  {" "}
-                  <VscRemoteExplorer size={15} />
-                  {workplace}
-                </p>
-                <p className="flex gap-2 items-center">
-                  <IoLocation size={15} />
-                  {location}
-                </p>
-              </div>
+      <li className="list-row  ">
+        <div>
+          <img className="size-15 rounded-box" src={logo} />
+        </div>
+        <div className="space-y-5 ">
+          <h3 className="md:text-2xl text-md font-bold">{title}</h3>
+          <div className="text-xs uppercase font-semibold opacity-60 md:flex md:gap-29  ">
+            {company}
+            <div className="md:flex gap-14 space-y-3 md:space-y-0 mt-3 md:mt-0">
+              <p className="flex gap-2 items-center">
+                <MdHourglassFull size={15} />
+                {jobType}
+              </p>
+              <p className="flex gap-2 items-center">
+                {" "}
+                <VscRemoteExplorer size={15} />
+                {workplace}
+              </p>
+              <p className="flex gap-2 items-center">
+                <IoLocation size={15} />
+                {location}
+              </p>
             </div>
           </div>
         </div>

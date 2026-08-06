@@ -25,14 +25,14 @@ const PostJob = () => {
     <div>
       <div className="flex justify-between px-5 items-center">
         <div>
-          <h3 className="text-xl font-bold">
+          <h3 className="md:text-2xl text-md font-bold">
             My <span className="text-primary">Posted</span> Jobs
           </h3>
           <p>Manage your all posted jobs</p>
         </div>
         <button
           onClick={handelNavigate}
-          className="bg-primary text-gray-100 btn"
+          className="bg-primary text-gray-100 btn btn-sm"
         >
           Add new Job
         </button>

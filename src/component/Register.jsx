@@ -26,7 +26,7 @@ const Register = () => {
           setUser({ ...user, displayName: name, photoURL: image });
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
           // setUser(user);
         });
       instance
@@ -36,7 +36,7 @@ const Register = () => {
           image: image,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
     });
   };

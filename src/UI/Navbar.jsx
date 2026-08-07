@@ -4,14 +4,14 @@ import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../assets/careerCode.png";
 
 const Navbar = () => {
-  const { user, signOutUser } = use(AuthContext);
+  const { user, signOutUser, setLoading } = use(AuthContext);
   const navigate = useNavigate();
   // console.log(user.accessToken);
 
   const handelSignOut = () => {
     signOutUser().then(() => {
-      navigate("/login");
       alert("sign out user successfully");
+      navigate("/login");
     });
   };
 

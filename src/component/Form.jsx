@@ -62,7 +62,7 @@ const Form = () => {
     };
     // console.log(application);
     instance.post("/application", application).then((res) => {
-      console.log("after secure call", res.data);
+      // console.log("after secure call", res.data);
       if (res.data.insertedId) {
         Swal.fire({
           position: "center",

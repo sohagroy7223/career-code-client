@@ -31,7 +31,7 @@ const Login = () => {
           image: `${result.user?.photoURL}`,
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
         });
     });
   };
